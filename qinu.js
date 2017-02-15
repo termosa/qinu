@@ -34,13 +34,15 @@
     return qinuString;
   }
 
-  function qinu(options) {
+  function qinu(options, args) {
     var opts = {
       length: options && options.length || defaultLength,
       template: options && options.template || defaultTemplate,
       chars: (options && options.chars || defaultChars).slice()
     };
-    var args = Array.prototype.slice.call(arguments, 1);
+    if (!(args instanceof Array)) {
+      args = Array.prototype.slice.call(arguments, 1);
+    }
     if (options && options.args) {
       args = options.args.concat(args);
     }
