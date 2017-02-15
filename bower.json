@@ -1,0 +1,22 @@
+{
+  "name": "qinu",
+  "description": "A unique string generator",
+  "main": "qinu.min.js",
+  "authors": [
+    "Stanislav Termosa <termosa.stanislav@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "unique",
+    "uniq",
+    "id",
+    "string",
+    "generator"
+  ],
+  "homepage": "https://github.com/termosa/qinu",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
