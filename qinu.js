@@ -10,14 +10,7 @@
 
   var defaultLength = 8;
   var defaultTemplate = '%qinu%';
-  var defaultChars = [
-    1,2,3,4,5,6,7,8,9,0,
-    'a','b','c','d','e',
-    'f','g','h','i','j',
-    'k','l','m','n','o',
-    'p','q','r','s','t',
-    'u','v','w','x','y','z'
-  ];
+  var defaultChars = '1234567890abcdefghijklmnopqrstuvwxyz';
 
   function generateString(chars, length, string) {
     if (typeof string === 'undefined') {
