@@ -35,15 +35,17 @@
   }
 
   function qinu(options, args) {
+    options = options || {};
     var opts = {
-      length: options && options.length || defaultLength,
-      template: options && options.template || defaultTemplate,
-      chars: (options && options.chars || defaultChars).slice()
+      length: typeof options.length === 'number'
+        ? options.length : defaultLength,
+      template: options.template || defaultTemplate,
+      chars: (options.chars || defaultChars).slice()
     };
     if (!(args instanceof Array)) {
       args = Array.prototype.slice.call(arguments, 1);
     }
-    if (options && options.args) {
+    if (options.args) {
       args = options.args.concat(args);
     }
     return generate(opts, args);
