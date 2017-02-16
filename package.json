@@ -1,10 +1,10 @@
 {
   "name": "qinu",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A unique string generator",
   "main": "qinu.js",
   "scripts": {
-    "build": "uglifyjs -co qinu.min.js --source-map qinu.min.map.js -- qinu.js",
+    "build": "uglifyjs -co qinu.min.js --source-map qinu.min.js.map -- qinu.js",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
