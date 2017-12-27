@@ -34,11 +34,16 @@
     return qinuString;
   }
 
+  function normalizeOptions(options) {
+    if (!options) return {};
+    return typeof options === 'object'
+      ? options : { length: +options };
+  }
+
   function qinu(options, args) {
-    options = options || {};
+    options = normalizeOptions(options);
     var opts = {
-      length: typeof options.length === 'number'
-        ? options.length : defaultLength,
+      length: options.length || defaultLength,
       template: options.template || defaultTemplate,
       chars: (options.chars || defaultChars).slice()
     };
