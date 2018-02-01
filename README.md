@@ -1,9 +1,7 @@
-# qinu
+# qinu [![NPM version](https://img.shields.io/npm/v/qinu.svg?style=flat-square)](https://www.npmjs.com/package/qinu) [![Bower version](https://img.shields.io/bower/v/qinu.svg?style=flat-square)](https://github.com/termosa/qinu)
 
 A unique string generator
 
-[![NPM version](https://img.shields.io/npm/v/qinu.svg?style=flat-square)](https://www.npmjs.com/package/qinu)
-![Bower version](https://img.shields.io/bower/v/qinu.svg?style=flat-square)
 
 ## Installation
 
@@ -42,7 +40,7 @@ as well you can do it with [RequireJS](http://requirejs.org/) or any similar too
 ### Basic usage
 
 ```js
-// Generates 8-character random string, e.g. "u1j1ot0f"
+// Generates 64-character random string, e.g. "u1j1ot0f"
 var randomString = qinu();
 ```
 
@@ -144,4 +142,3 @@ var randomString = generateRandom10Characters();
 ## License
 
 MIT © [Stanislav Termosa](https://github.com/termosa)
-

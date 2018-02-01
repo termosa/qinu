@@ -4,9 +4,10 @@
   "description": "A unique string generator",
   "main": "qinu.js",
   "scripts": {
-    "build": "uglifyjs -co qinu.min.js --source-map qinu.min.js.map -- qinu.js",
-    "prepublish": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "prepublish": "npm run build && npm run test",
+    "test": "standard && ava",
+    "pretest": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,9 @@
   },
   "homepage": "https://github.com/termosa/qinu#readme",
   "devDependencies": {
-    "uglify-js": "2.7.5"
+    "ava": "^0.25.0",
+    "rollup": "^0.55.1",
+    "rollup-plugin-uglify": "^3.0.0",
+    "standard": "^10.0.3"
   }
 }
