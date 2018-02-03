@@ -1,46 +1,68 @@
+import shuffle from './shuffle'
+
 const defaults = {
-  length: 64,
+  length: 32,
   template: '%qinu%',
-  chars: '1234567890abcdefghijklmnopqrstuvwxyz'
+  dict: '1234567890abcdefghijklmnopqrstuvwxyz',
+  random: false
 }
 
-function generateString (chars, length, string) {
-  if (typeof string === 'undefined') {
-    return generateString(chars, length, '')
-  }
-  if (string.length >= length) {
-    return string
-  }
-  const randomIndex = Math.floor(Math.random() * chars.length)
-  const newChar = chars[randomIndex]
-  return generateString(chars, length, string + newChar)
+const next = (key, dict) => {
+  if (!key.length) return ''
+  const i = dict.indexOf(key.slice(-1))
+  if (i + 1 < dict.length) return key.slice(0, -1) + dict[i + 1]
+  return next(key.slice(0, -1), dict) + dict[0]
 }
 
-function generate (opts, args) {
-  const randomString = generateString(opts.chars, opts.length)
+const generateKey = (dict, length, key = '') => {
+  if (key.length >= length) return key
+  const randomIndex = Math.floor(Math.random() * dict.length)
+  const newChar = dict[randomIndex]
+  return generateKey(dict, length, key + newChar)
+}
+
+const applyTemplate = (template, key, args) => {
   return args.reduce(
     (str, arg, i) => str.replace(new RegExp(`%arg\\[${i}\\]%`, 'g'), arg),
-    opts.template.replace(/%qinu%/g, randomString)
+    template.replace(/%qinu%/g, key)
   )
 }
 
-function normalizeOptions (options) {
-  if (!options && options !== 0) return {}
-  return typeof options === 'object'
-    ? options : { length: +options }
+const prepareDict = (dict) =>
+  shuffle(dict.split('').sort().filter((c, i, l) => l[i - 1] !== c)).join('')
+
+const normalizeOptions = (options) => {
+  if (!options && options !== 0) return { ...defaults }
+  options = typeof options === 'object'
+    ? { ...options } : { length: +options }
+  if (options.dict) options.dict = prepareDict(options.dict)
+  return { ...defaults, ...options }
 }
 
+class Qinu {
+  next (dict, length) {
+    const key = this.key || generateKey(dict, length)
+    this.key = next(key, dict)
+    return this.key
+  }
+}
+
+// Not an arrow function, cause it requires context
 function qinu (options, args) {
-  const opts = Object.assign({}, defaults, normalizeOptions(options))
+  const { dict, length, template, args: optArgs, random } =
+    this instanceof Qinu ? options : normalizeOptions(options)
   if (!(args instanceof Array)) {
     args = Array.prototype.slice.call(arguments, 1)
   }
-  if (opts.args instanceof Array) {
-    args = opts.args.concat(args)
+  if (optArgs instanceof Array) {
+    args = optArgs.concat(args)
   }
-  return generate(opts, args)
+
+  const key = !random && this instanceof Qinu
+    ? this.next(dict, length) : generateKey(dict, length)
+  return applyTemplate(template, key, args)
 }
 
-qinu.create = opts => qinu.bind(null, opts)
+qinu.create = options => qinu.bind(new Qinu(), normalizeOptions(options))
 
 export default qinu

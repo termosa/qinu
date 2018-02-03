@@ -1,6 +1,6 @@
 {
   "name": "qinu",
-  "description": "A unique string generator",
+  "description": "Highly customizable generator of [random] strings",
   "main": "qinu.min.js",
   "authors": [
     "Stanislav Termosa <termosa.stanislav@gmail.com>"
@@ -8,9 +8,8 @@
   "license": "MIT",
   "keywords": [
     "unique",
+    "random",
     "uniq",
-    "id",
-    "string",
     "generator"
   ],
   "homepage": "https://github.com/termosa/qinu",

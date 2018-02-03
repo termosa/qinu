@@ -1,7 +1,7 @@
 {
   "name": "qinu",
   "version": "1.2.0",
-  "description": "A unique string generator",
+  "description": "Highly customizable generator of [random] strings",
   "main": "qinu.js",
   "scripts": {
     "build": "rollup -c",
@@ -15,9 +15,8 @@
   },
   "keywords": [
     "unique",
+    "random",
     "uniq",
-    "id",
-    "string",
     "generator"
   ],
   "author": "Stanislav Termosa <termosa.stanislav@gmail.com>",
@@ -29,7 +28,9 @@
   "devDependencies": {
     "ava": "^0.25.0",
     "rollup": "^0.55.1",
+    "rollup-plugin-buble": "^0.18.0",
     "rollup-plugin-uglify": "^3.0.0",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "uniq": "^1.0.1"
   }
 }
