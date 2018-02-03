@@ -1,4 +1,4 @@
-# qinu [![NPM version](https://img.shields.io/npm/v/qinu.svg?style=flat-square)](https://www.npmjs.com/package/qinu) [![Bower version](https://img.shields.io/bower/v/qinu.svg?style=flat-square)](https://github.com/termosa/qinu)
+# qinu [![NPM version](https://img.shields.io/npm/v/qinu.svg?style=flat-square)](https://www.npmjs.com/package/qinu) [![Bower version](https://img.shields.io/bower/v/qinu.svg?style=flat-square)](https://github.com/termosa/qinu) [![Travis](https://img.shields.io/travis/termosa/qinu.svg?style=flat-square)](https://travis-ci.org/termosa/qinu)
 
 Highly customizable generator of [random] strings.
 
